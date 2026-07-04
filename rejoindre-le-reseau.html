@@ -59,12 +59,61 @@ button:hover,.btn:hover,.cta-nav:hover{transform:translateY(-2px);box-shadow:0 1
 }
 
 </style></head><body><header><nav><a class="logo brand-wrap" href="index.html"><img class="brand-logo" src="logo-proxiartipro.png" alt="Logo ProxiArtiPro"><span>Proxi<span>ArtiPro</span></span></a><button class="mobile-toggle" onclick="toggleMenu()">☰ Menu</button><div class="links"><a href="index.html" class="">Accueil</a><a href="a-propos.html" class="">À propos</a><a href="nos-services.html" class="">Services</a><a href="depannage-urgent.html" class="">Dépannage</a><a href="zones-intervention.html" class="">Zones</a><a href="rejoindre-le-reseau.html" class="cta-nav">Artisans</a><a href="professionnels.html" class="">Professionnels</a><a href="faq.html" class="">FAQ</a><a href="contact.html" class="">Contact</a></div></nav></header><main><section class="hero"><div class="hero-inner"><div class="badge">Artisans</div><h1>Rejoignez le réseau <span>ProxiArtiPro.</span></h1><p>Vous êtes un artisan sérieux et souhaitez développer votre activité dans les Landes ?</p></div></section>
-<section><div class="container split"><div class="card"><h2>Pourquoi nous rejoindre ?</h2><ul class="checks dark"><li>Recevoir des demandes correspondant à votre métier</li><li>Développer votre visibilité</li><li>Travailler avec un interlocuteur unique</li><li>Intégrer un réseau en croissance</li></ul><h3>Nos critères</h3><p>Entreprise déclarée, professionnalisme, assurances adaptées, travail soigné et communication transparente.</p></div><form action="mailto:batilinkfrance@gmail.com" method="post" enctype="text/plain"><h3>Déposer votre candidature</h3><input placeholder="Nom de l'entreprise"><input placeholder="Nom et prénom"><input placeholder="Email"><input placeholder="Ville / secteur"><input placeholder="Métier"><select><option>Assurance professionnelle</option><option>Oui</option><option>Non</option></select><textarea placeholder="Présentez votre activité"></textarea><button>Envoyer ma candidature</button></form></div></section><section class="light"><div class="container"><div class="card"><h2>Fonctionnement du partenariat</h2><p>Chaque candidature est étudiée individuellement. Les conditions de partenariat sont expliquées lors d'un échange personnalisé selon le type de chantier, le métier, le volume de demandes et le niveau d'accompagnement souhaité.</p><div class="notice">Aucun paiement n'est demandé directement sur le site.</div></div></div></section></main><footer><div class="footer-inner"><div><b>Proxi<span>ArtiPro</span></b><br>Le réseau qui simplifie tous vos travaux.<br>SIRET : 844 552 760 00010 — Parentis-en-Born</div><div><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a><br>Contact : batilinkfrance@gmail.com<br>© 2026 ProxiArtiPro</div></div></footer>
+<section><div class="container split"><div class="card"><h2>Pourquoi nous rejoindre ?</h2><ul class="checks dark"><li>Recevoir des demandes correspondant à votre métier</li><li>Développer votre visibilité</li><li>Travailler avec un interlocuteur unique</li><li>Intégrer un réseau en croissance</li></ul><h3>Nos critères</h3><p>Entreprise déclarée, professionnalisme, assurances adaptées, travail soigné et communication transparente.</p></div><form action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="9fb078cb-4d00-4651-8f61-1f8f6619953e">
+<input type="hidden" name="from_name" value="ProxiArtiPro">
+<input type="checkbox" name="botcheck" style="display:none;">
+<h3>Déposer votre candidature</h3><input placeholder="Nom de l'entreprise"><input placeholder="Nom et prénom"><input placeholder="Email"><input placeholder="Ville / secteur"><input placeholder="Métier"><select><option>Assurance professionnelle</option><option>Oui</option><option>Non</option></select><textarea placeholder="Présentez votre activité"></textarea><button>Envoyer ma candidature</button></form></div></section><section class="light"><div class="container"><div class="card"><h2>Fonctionnement du partenariat</h2><p>Chaque candidature est étudiée individuellement. Les conditions de partenariat sont expliquées lors d'un échange personnalisé selon le type de chantier, le métier, le volume de demandes et le niveau d'accompagnement souhaité.</p><div class="notice">Aucun paiement n'est demandé directement sur le site.</div></div></div></section></main><footer><div class="footer-inner"><div><b>Proxi<span>ArtiPro</span></b><br>Le réseau qui simplifie tous vos travaux.<br>SIRET : 844 552 760 00010 — Parentis-en-Born</div><div><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a><br>Contact : batilinkfrance@gmail.com<br>© 2026 ProxiArtiPro</div></div></footer>
 <script>
 function toggleMenu(){
   const links = document.querySelector('.links');
   if(links){ links.classList.toggle('open'); }
 }
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const forms = document.querySelectorAll("form");
+  forms.forEach(function(form) {
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const button = form.querySelector("button");
+      const originalText = button ? button.textContent : "";
+
+      if (button) {
+        button.textContent = "Envoi en cours...";
+        button.disabled = true;
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          form.reset();
+          alert("Votre demande a bien été envoyée. ProxiArtiPro vous recontactera dans les meilleurs délais.");
+        } else {
+          alert("Une erreur est survenue. Merci de réessayer ou de nous contacter par e-mail.");
+        }
+      } catch (error) {
+        alert("Impossible d'envoyer le formulaire pour le moment. Merci de réessayer plus tard.");
+      }
+
+      if (button) {
+        button.textContent = originalText;
+        button.disabled = false;
+      }
+    });
+  });
+});
 </script>
 
 </body></html>

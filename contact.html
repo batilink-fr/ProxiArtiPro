@@ -59,13 +59,62 @@ button:hover,.btn:hover,.cta-nav:hover{transform:translateY(-2px);box-shadow:0 1
 }
 
 </style></head><body><header><nav><a class="logo brand-wrap" href="index.html"><img class="brand-logo" src="logo-proxiartipro.png" alt="Logo ProxiArtiPro"><span>Proxi<span>ArtiPro</span></span></a><button class="mobile-toggle" onclick="toggleMenu()">☰ Menu</button><div class="links"><a href="index.html" class="">Accueil</a><a href="a-propos.html" class="">À propos</a><a href="nos-services.html" class="">Services</a><a href="depannage-urgent.html" class="">Dépannage</a><a href="zones-intervention.html" class="">Zones</a><a href="rejoindre-le-reseau.html" class="">Artisans</a><a href="professionnels.html" class="">Professionnels</a><a href="faq.html" class="">FAQ</a><a href="contact.html" class="cta-nav">Contact</a></div></nav></header><main><section class="hero"><div class="hero-inner"><div class="badge">Contact</div><h1>Parlons de <span>votre projet.</span></h1><p>Particulier, professionnel ou artisan : notre équipe est à votre écoute pour étudier votre demande.</p></div></section>
-<section><div class="container split"><div class="card"><h2>Contact</h2><p><strong>Email :</strong> batilinkfrance@gmail.com</p><p><strong>Zone :</strong> Les Landes (40)</p><p><strong>Téléphone :</strong> ajouté plus tard avec un forfait professionnel.</p><p><strong>Horaires :</strong> demandes traitées selon disponibilité.</p><div class="notice">Les formulaires seront ensuite reliés à une solution gratuite pour recevoir les demandes directement par e-mail.</div></div><form action="mailto:batilinkfrance@gmail.com" method="post" enctype="text/plain"><h3>Envoyer une demande</h3><input name="Nom" placeholder="Nom / entreprise" required><input name="Email" type="email" placeholder="Adresse e-mail" required><input name="Ville" placeholder="Commune dans les Landes"><select name="Profil"><option>Je suis...</option><option>Particulier</option><option>Artisan</option><option>Professionnel</option></select><select name="Type de demande"><option>Type de demande</option><option>Demande de devis</option><option>Dépannage urgent</option><option>Rejoindre le réseau</option><option>Partenariat professionnel</option></select><textarea name="Message" placeholder="Expliquez votre besoin"></textarea><button>Envoyer ma demande</button></form></div></section><section class="light"><div class="container"><div class="cta"><h2>Chaque projet commence par une conversation.</h2><p>Échangeons ensemble sur votre besoin et trouvons la solution la plus adaptée.</p></div></div></section>
+<section><div class="container split"><div class="card"><h2>Contact</h2><p><strong>Email :</strong> batilinkfrance@gmail.com</p><p><strong>Zone :</strong> Les Landes (40)</p><p><strong>Téléphone :</strong> ajouté plus tard avec un forfait professionnel.</p><p><strong>Horaires :</strong> demandes traitées selon disponibilité.</p><div class="notice">Les formulaires seront ensuite reliés à une solution gratuite pour recevoir les demandes directement par e-mail.</div></div><form action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="9fb078cb-4d00-4651-8f61-1f8f6619953e">
+<input type="hidden" name="from_name" value="ProxiArtiPro">
+<input type="checkbox" name="botcheck" style="display:none;">
+<h3>Envoyer une demande</h3><input name="Nom" placeholder="Nom / entreprise" required><input name="Email" type="email" placeholder="Adresse e-mail" required><input name="Ville" placeholder="Commune dans les Landes"><select name="Profil"><option>Je suis...</option><option>Particulier</option><option>Artisan</option><option>Professionnel</option></select><select name="Type de demande"><option>Type de demande</option><option>Demande de devis</option><option>Dépannage urgent</option><option>Rejoindre le réseau</option><option>Partenariat professionnel</option></select><textarea name="Message" placeholder="Expliquez votre besoin"></textarea><button>Envoyer ma demande</button></form></div></section><section class="light"><div class="container"><div class="cta"><h2>Chaque projet commence par une conversation.</h2><p>Échangeons ensemble sur votre besoin et trouvons la solution la plus adaptée.</p></div></div></section>
 </main><footer><div class="footer-inner"><div><b>Proxi<span>ArtiPro</span></b><br>Le réseau qui simplifie tous vos travaux.<br>SIRET : 844 552 760 00010 — Parentis-en-Born</div><div><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a><br>Contact : batilinkfrance@gmail.com<br>© 2026 ProxiArtiPro</div></div></footer>
 <script>
 function toggleMenu(){
   const links = document.querySelector('.links');
   if(links){ links.classList.toggle('open'); }
 }
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const forms = document.querySelectorAll("form");
+  forms.forEach(function(form) {
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const button = form.querySelector("button");
+      const originalText = button ? button.textContent : "";
+
+      if (button) {
+        button.textContent = "Envoi en cours...";
+        button.disabled = true;
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          form.reset();
+          alert("Votre demande a bien été envoyée. ProxiArtiPro vous recontactera dans les meilleurs délais.");
+        } else {
+          alert("Une erreur est survenue. Merci de réessayer ou de nous contacter par e-mail.");
+        }
+      } catch (error) {
+        alert("Impossible d'envoyer le formulaire pour le moment. Merci de réessayer plus tard.");
+      }
+
+      if (button) {
+        button.textContent = originalText;
+        button.disabled = false;
+      }
+    });
+  });
+});
 </script>
 
 </body></html>

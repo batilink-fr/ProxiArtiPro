@@ -59,12 +59,61 @@ button:hover,.btn:hover,.cta-nav:hover{transform:translateY(-2px);box-shadow:0 1
 }
 
 </style></head><body><header><nav><a class="logo brand-wrap" href="index.html"><img class="brand-logo" src="logo-proxiartipro.png" alt="Logo ProxiArtiPro"><span>Proxi<span>ArtiPro</span></span></a><button class="mobile-toggle" onclick="toggleMenu()">☰ Menu</button><div class="links"><a href="index.html" class="">Accueil</a><a href="a-propos.html" class="">À propos</a><a href="nos-services.html" class="">Services</a><a href="depannage-urgent.html" class="">Dépannage</a><a href="zones-intervention.html" class="">Zones</a><a href="rejoindre-le-reseau.html" class="">Artisans</a><a href="professionnels.html" class="cta-nav">Professionnels</a><a href="faq.html" class="">FAQ</a><a href="contact.html" class="">Contact</a></div></nav></header><main><section class="hero"><div class="hero-inner"><div class="badge">Professionnels</div><h1>Un relais travaux fiable pour <span>vos clients et vos projets.</span></h1><p>Un réseau d'artisans sélectionnés et un interlocuteur unique pour les professionnels de l'immobilier et du bâtiment.</p></div></section>
-<section><div class="container"><div class="grid4"><div class="card"><div class="emoji">🏢</div><h3>Agences immobilières</h3><p>Travaux avant vente, avant location, remise en état.</p></div><div class="card"><div class="emoji">📐</div><h3>Architectes</h3><p>Recherche d'artisans, lots secondaires, finitions.</p></div><div class="card"><div class="emoji">🏗️</div><h3>Constructeurs</h3><p>SAV, reprises, finitions, renfort chantier.</p></div><div class="card"><div class="emoji">🏘️</div><h3>Syndics & investisseurs</h3><p>Entretien, rénovation, dépannage.</p></div></div></div></section><section class="light"><div class="container split"><div class="panel"><h2>Pourquoi travailler avec nous ?</h2><ul class="checks"><li>Un interlocuteur unique</li><li>Un réseau d'artisans sélectionnés</li><li>Une réponse adaptée selon le chantier</li><li>Un fonctionnement clair</li></ul></div><form action="mailto:batilinkfrance@gmail.com" method="post" enctype="text/plain"><h3>Demande de partenariat</h3><input placeholder="Nom de l'entreprise"><input placeholder="Nom et prénom"><input placeholder="Email"><input placeholder="Ville / secteur"><select><option>Votre profil</option><option>Agence immobilière</option><option>Architecte</option><option>Constructeur</option><option>Syndic</option></select><textarea placeholder="Expliquez vos besoins"></textarea><button>Envoyer ma demande</button></form></div></section></main><footer><div class="footer-inner"><div><b>Proxi<span>ArtiPro</span></b><br>Le réseau qui simplifie tous vos travaux.<br>SIRET : 844 552 760 00010 — Parentis-en-Born</div><div><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a><br>Contact : batilinkfrance@gmail.com<br>© 2026 ProxiArtiPro</div></div></footer>
+<section><div class="container"><div class="grid4"><div class="card"><div class="emoji">🏢</div><h3>Agences immobilières</h3><p>Travaux avant vente, avant location, remise en état.</p></div><div class="card"><div class="emoji">📐</div><h3>Architectes</h3><p>Recherche d'artisans, lots secondaires, finitions.</p></div><div class="card"><div class="emoji">🏗️</div><h3>Constructeurs</h3><p>SAV, reprises, finitions, renfort chantier.</p></div><div class="card"><div class="emoji">🏘️</div><h3>Syndics & investisseurs</h3><p>Entretien, rénovation, dépannage.</p></div></div></div></section><section class="light"><div class="container split"><div class="panel"><h2>Pourquoi travailler avec nous ?</h2><ul class="checks"><li>Un interlocuteur unique</li><li>Un réseau d'artisans sélectionnés</li><li>Une réponse adaptée selon le chantier</li><li>Un fonctionnement clair</li></ul></div><form action="https://api.web3forms.com/submit" method="POST">
+<input type="hidden" name="access_key" value="9fb078cb-4d00-4651-8f61-1f8f6619953e">
+<input type="hidden" name="from_name" value="ProxiArtiPro">
+<input type="checkbox" name="botcheck" style="display:none;">
+<h3>Demande de partenariat</h3><input placeholder="Nom de l'entreprise"><input placeholder="Nom et prénom"><input placeholder="Email"><input placeholder="Ville / secteur"><select><option>Votre profil</option><option>Agence immobilière</option><option>Architecte</option><option>Constructeur</option><option>Syndic</option></select><textarea placeholder="Expliquez vos besoins"></textarea><button>Envoyer ma demande</button></form></div></section></main><footer><div class="footer-inner"><div><b>Proxi<span>ArtiPro</span></b><br>Le réseau qui simplifie tous vos travaux.<br>SIRET : 844 552 760 00010 — Parentis-en-Born</div><div><a href="mentions-legales.html">Mentions légales</a><a href="politique-confidentialite.html">Confidentialité</a><br>Contact : batilinkfrance@gmail.com<br>© 2026 ProxiArtiPro</div></div></footer>
 <script>
 function toggleMenu(){
   const links = document.querySelector('.links');
   if(links){ links.classList.toggle('open'); }
 }
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const forms = document.querySelectorAll("form");
+  forms.forEach(function(form) {
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const button = form.querySelector("button");
+      const originalText = button ? button.textContent : "";
+
+      if (button) {
+        button.textContent = "Envoi en cours...";
+        button.disabled = true;
+      }
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          form.reset();
+          alert("Votre demande a bien été envoyée. ProxiArtiPro vous recontactera dans les meilleurs délais.");
+        } else {
+          alert("Une erreur est survenue. Merci de réessayer ou de nous contacter par e-mail.");
+        }
+      } catch (error) {
+        alert("Impossible d'envoyer le formulaire pour le moment. Merci de réessayer plus tard.");
+      }
+
+      if (button) {
+        button.textContent = originalText;
+        button.disabled = false;
+      }
+    });
+  });
+});
 </script>
 
 </body></html>
